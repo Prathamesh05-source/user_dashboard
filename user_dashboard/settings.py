@@ -24,9 +24,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'project','templates')
 SECRET_KEY = 'django-insecure-#l8t6etbn)l&v@8^9^ub-n*o!(md3c4n*(%2f^m9(n33z!h-nj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',]
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -85,18 +85,13 @@ WSGI_APPLICATION = 'user_dashboard.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://localhost:5432/db.sqlite3')
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 
 # Password validation
